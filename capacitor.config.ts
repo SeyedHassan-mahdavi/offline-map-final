@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.arbaeen.app',
-  appName: 'arbaeen',
+  appId: 'com.example.app',
+  appName: 'offline-map-next',
   webDir: 'out'
 };
 
