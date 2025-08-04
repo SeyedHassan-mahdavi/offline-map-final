@@ -32,6 +32,8 @@ android/app/build/
 # 🔐 Secrets / Keys
 *.keystore
 *.b64
+keystore.txt
+android/release-key.keystore
 
 # 🌐 Env / config
 .env*
