@@ -37,9 +37,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Set JAVA_HOME in gradle.properties
-        run: echo "org.gradle.java.home=$JAVA_HOME" >> android/gradle.properties
-
       - name: Decode Keystore from Secret
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/release-key.keystore
