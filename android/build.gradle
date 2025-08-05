@@ -55,16 +55,16 @@ subprojects {
 }
 
 subprojects {
-    afterEvaluate { project ->
-        if (project.plugins.hasPlugin("org.jetbrains.kotlin.android") || project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
-            println("⚙️ اعمال JVM Toolchain روی پروژه: ${project.name}")
-            project.extensions.findByName("kotlin")?.apply {
-                def kotlinExt = it as org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
-                kotlinExt.jvmToolchain(17)
-            }
-        }
+  afterEvaluate { project ->
+    if (project.plugins.hasPlugin("org.jetbrains.kotlin.android") || project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
+      println("⚙️ تنظیم JVM Toolchain برای پروژه: ${project.name}")
+      project.extensions.configure(org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension) {
+        it.jvmToolchain(17)
+      }
     }
+  }
 }
+
 
 
 
