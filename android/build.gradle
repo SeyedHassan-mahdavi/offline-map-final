@@ -2,9 +2,9 @@
 
 buildscript {
     ext {
-        compileSdkVersion = 34
+        compileSdkVersion = 35
         minSdkVersion = 23
-        targetSdkVersion = 34
+        targetSdkVersion = 35
         javaVersion = JavaVersion.VERSION_17
     }
 
