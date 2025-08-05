@@ -46,3 +46,6 @@ next-env.d.ts
 
 # 🗺️ Optional: Exclude large PMTiles if needed
 # public/iraq.pmtiles
+
+# Export workaround
+app.bak/

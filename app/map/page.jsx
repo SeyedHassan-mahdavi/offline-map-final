@@ -1,6 +1,6 @@
-'use client';
-import OfflineMapWithLocation from '@/components/OfflineMap';
+  'use client';
+  import OfflineMapWithLocation from '@/components/OfflineMap';
 
-export default function MapPage() {
-  return <OfflineMapWithLocation />;
-}
+  export default function MapPage() {
+    return <OfflineMapWithLocation />;
+  }

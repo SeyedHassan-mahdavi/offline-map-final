@@ -25,11 +25,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build & Export Next.js static site
-        run: |
-          npm run build
-          mkdir -p www
-          cp -r out/* www/
+      - name: Temporarily rename app/ folder to avoid conflict with pages/
+        run: mv app app.bak
+
+      - name: Build static Next.js site
+        run: npm run build
+
+      - name: Restore app/ folder
+        run: mv app.bak app
+
+      - name: Sync Capacitor with Android
+        run: npx cap sync android
 
       - name: Set up JDK
         uses: actions/setup-java@v3
