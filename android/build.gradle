@@ -33,16 +33,6 @@ allprojects {
     }
 }
 
-// ✅ تنظیم JVM 17 برای Kotlin (در Gradle 8+)
-allprojects {
-    afterEvaluate {
-        if (project.plugins.hasPlugin("org.jetbrains.kotlin.android") || project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
-            project.extensions.configure(org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions) {
-                jvmTarget = "17"
-            }
-        }
-    }
-}
 
 
 task clean(type: Delete) {
