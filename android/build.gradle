@@ -53,3 +53,17 @@ subprojects {
         }
     }
 }
+
+// ✅ تضمین اعمال JVM 17 روی همه پلاگین‌های Kotlin (مثل capacitor-geolocation)
+subprojects {
+    afterEvaluate { project ->
+        if (project.plugins.hasPlugin("org.jetbrains.kotlin.android") || project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
+            println("⚙️ تنظیم jvmTarget برای پروژه: ${project.name}")
+            project.extensions.findByType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions)?.apply {
+                jvmTarget = "17"
+            }
+        }
+    }
+}
+
+
