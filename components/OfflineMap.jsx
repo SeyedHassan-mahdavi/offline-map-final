@@ -56,7 +56,7 @@ export default function OfflineMapWithLocation() {
       maplibregl.getRTLTextPluginStatus() === 'unavailable'
     ) {
       maplibregl.setRTLTextPlugin(
-        '/mapbox-gl-rtl-text.js',
+        'mapbox-gl-rtl-text.js',
         () => console.log('✅ RTL Plugin Loaded'),
         true
       );
@@ -66,7 +66,7 @@ export default function OfflineMapWithLocation() {
     maplibregl.addProtocol('pmtiles', protocol.tile);
 
     const init = async () => {
-      const res = await fetch('/style.json');
+      const res = await fetch('style.json');
       const style = await res.json();
 
       if (style.sources?.openmaptiles) {
