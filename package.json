@@ -12,6 +12,7 @@
     "@capacitor/android": "^7.4.2",
     "@capacitor/cli": "^7.4.2",
     "@capacitor/core": "^7.4.2",
+    "@capacitor/geolocation": "^7.1.4",
     "framer-motion": "^12.23.12",
     "maplibre-gl": "^5.6.1",
     "next": "15.4.5",
