@@ -370,6 +370,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { Geolocation } from '@capacitor/geolocation';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import MapMarker from '../components/MapMarker';
+import { downloadFile } from '@capacitor/file-transfer';
+
 
 export default function OfflineMapWithLocation() {
   const mapContainer = useRef(null);
@@ -402,51 +404,34 @@ export default function OfflineMapWithLocation() {
   };
 
 
-  const downloadMapFile = async () => {
-    setIsDownloading(true);
-    setDownloadPercent(0);
+const downloadMapFile = async () => {
+  setIsDownloading(true);
+  setDownloadPercent(0);
 
-    try {
-      const response = await fetch(MAP_FILE_URL);
-      if (!response.ok || !response.body) throw new Error('❌ خطا در اتصال به سرور');
+  try {
+    const result = await downloadFile({
+      url: MAP_FILE_URL,
+      path: MAP_FILE_NAME,
+      directory: Directory.Data,
+      progress: true,
+    }).progress(({ value }) => {
+      setDownloadPercent(Math.floor(value * 100));
+    });
 
-      const contentLength = Number(response.headers.get('Content-Length'));
-      const reader = response.body.getReader();
-
-      let receivedLength = 0;
-      const chunks = [];
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        if (value) {
-          chunks.push(value);
-          receivedLength += value.length;
-          const percent = Math.floor((receivedLength / contentLength) * 100);
-          setDownloadPercent(percent);
-        }
-      }
-
-      const blob = new Blob(chunks, { type: 'application/octet-stream' });
-      const arrayBuffer = await blob.arrayBuffer();
-      const base64Data = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
-
-      await Filesystem.writeFile({
-        path: MAP_FILE_NAME,
-        data: base64Data,
-        directory: Directory.Data,
-      });
-
+    if (result && result.path) {
       alert('✅ دانلود با موفقیت انجام شد.');
       setMapReady(true);
-      window.location.reload(); // یا initMap(); فراخوانی مجدد
-    } catch (err) {
-      alert('❌ خطا در دانلود: ' + err.message);
+      window.location.reload(); // یا initMap();
+    } else {
+      throw new Error('فایل ذخیره نشد.');
     }
+  } catch (err) {
+    alert('❌ خطا در دانلود: ' + (err?.message || err));
+  }
 
-    setIsDownloading(false);
-  };
+  setIsDownloading(false);
+};
+
 
 
 
