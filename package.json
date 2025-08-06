@@ -14,7 +14,6 @@
     "@capacitor/core": "^7.4.2",
     "@capacitor/filesystem": "^7.1.4",
     "@capacitor/geolocation": "^7.1.4",
-    "@capacitor/http": "^0.0.2",
     "framer-motion": "^12.23.12",
     "maplibre-gl": "^5.6.1",
     "next": "15.4.5",

@@ -369,7 +369,6 @@ import { Protocol, PMTiles } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Geolocation } from '@capacitor/geolocation';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-import { Http } from '@capacitor/http';
 import MapMarker from '../components/MapMarker';
 
 export default function OfflineMapWithLocation() {
