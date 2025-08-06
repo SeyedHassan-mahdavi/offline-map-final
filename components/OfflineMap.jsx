@@ -413,7 +413,7 @@ const downloadMapFile = async () => {
       url: MAP_FILE_URL,
       path: MAP_FILE_NAME,
       directory: Directory.Data,
-      progress: true,
+      progress: false,
     }).progress(({ value }) => {
       setDownloadPercent(Math.floor(value * 100));
     });
