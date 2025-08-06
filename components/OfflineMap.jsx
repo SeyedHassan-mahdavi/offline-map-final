@@ -384,7 +384,7 @@ export default function OfflineMapWithLocation() {
 
 
   const MAP_FILE_NAME = 'iraq.pmtiles';
-  const MAP_FILE_URL = 'https://iraq.s3.ir-thr-at1.arvanstorage.ir/iraq.pmtiles?versionId='; // <-- لینک واقعی را جایگزین کن
+  const MAP_FILE_URL = 'https://iraq.s3.ir-thr-at1.arvanstorage.ir/iraq.pmtiles'; // <-- لینک واقعی را جایگزین کن
 
 
 
